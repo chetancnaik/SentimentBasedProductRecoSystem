@@ -210,29 +210,6 @@
                 );
             }
 
-
-
-            $(document).ready(function() {
-                $.ajax({
-                    url: "/userList",
-                    success: function(result) {
-                        arr = result.split(',')
-                        let obj = {}
-                        arr.forEach(item => {
-                            obj[item] = item
-                        })
-
-                        $('.basic').autocomplete({
-                            //source: result.split(','),
-                            source: obj,
-                            onSelectItem: onSelectItem,
-                            highlightClass: 'text-danger'
-                        });
-                    }
-                });
-            });
-
-
             $('#search').click(function() {
                 user = $('.basic').val();
                 if (user != '') {

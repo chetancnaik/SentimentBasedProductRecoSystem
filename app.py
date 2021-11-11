@@ -1,8 +1,4 @@
 
-
-# This is basically the heart of my flask 
-
-
 from flask import Flask, render_template, request, redirect, url_for, jsonify
 import pickle
 from model import Recommendation

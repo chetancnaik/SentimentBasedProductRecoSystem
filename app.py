@@ -13,12 +13,6 @@ app = Flask(__name__)  # intitialize the flaks app  # common
 import os
 from flask import send_from_directory
 
-
-@app.route('/favicon.ico')
-def favicon():
-    return send_from_directory(os.path.join(app.root_path, 'static'),
-                               'favicon.ico', mimetype='image/vnd.microsoft.icon')
-
 @app.route('/', methods = ['POST', 'GET'])
 def home():
     flag = False 
@@ -29,21 +23,10 @@ def home():
         data=recommend.getTopProducts(user)
     return render_template('index.html', data=data, flag=flag)
 
-@app.route('/userList', methods = ['GET'])
-def userList():
-    data=recommend.getUsers()
-    return data
-
 @app.route('/productList', methods = ['GET'])
 def productList():
     user=request.args.get("userid")
     data=recommend.getTopProductsNew(user)
-    return data
-
-@app.route('/analysText', methods = ['GET'])
-def analysText():
-    text=request.args.get("text")
-    data=recommend.analyiseSentiment(text)
     return data
 
 if __name__ == '__main__' :

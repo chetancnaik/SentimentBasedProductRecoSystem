@@ -13,10 +13,6 @@ from flask import send_from_directory
 def home():
     flag = False 
     data = ""
-    if request.method == 'POST':
-        flag = True
-        user = request.form["userid"]
-        data=recommend.getTopProducts(user)
     return render_template('index.html', data=data, flag=flag)
 
 @app.route('/productList', methods = ['GET'])

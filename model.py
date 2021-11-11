@@ -5,30 +5,15 @@ import pandas as pd
 import numpy as np
 #--- HTML Tag Removal
 import re 
-from nltk.corpus import stopwords
-from nltk.stem import PorterStemmer
-from nltk.stem.wordnet import WordNetLemmatizer
-from nltk.stem import SnowballStemmer
-from nltk.corpus import wordnet
-from nltk.stem.wordnet import WordNetLemmatizer
-import nltk
-
-
 
 class Recommendation:
     
     def __init__(self):
-        nltk.data.path.append('./nltk_data/')
-        nltk.download('stopwords')
-        nltk.download('punkt')
-        nltk.download('averaged_perceptron_tagger')
-        nltk.download('wordnet')
         self.data = pickle.load(open('data.pkl','rb'))
         self.user_final_rating = pickle.load(open('user_final_rating.pkl','rb'))
         self.model = pickle.load(open('logistic_regression.pkl','rb'))
         self.raw_data = pd.read_csv("sample30.csv")
         self.data = pd.concat([self.raw_data[['id','name','brand','categories','manufacturer']],self.data], axis=1)
-        
         
     def getTopProducts(self, user):
         items = self.user_final_rating.loc[user].sort_values(ascending=False)[0:20].index

@@ -170,8 +170,6 @@
 
         <script>
             $(function() {
-                //$(".emoji-smile").hide();
-                //$(".emoji-sad").hide();
                 $("#change").on("click", function() {
                     var text = $('#sent').val();
                     if (text != '') {
@@ -200,7 +198,6 @@
 
                 });
             });
-            //$('.select').autoComplete();
         </script>
         <script>
             function onSelectItem(item, element) {
@@ -226,8 +223,7 @@
                                         $('<td>').text(item.brand),
                                         $('<td>').text(item.manufacturer),
                                         $('<td>').text(item.categories)
-                                    ); //.appendTo('#records_table');
-                                    //console.log($tr.wrap('<p>').html());
+                                    );
                                     $tr.prependTo('table > tbody');
                                 });
                             });
